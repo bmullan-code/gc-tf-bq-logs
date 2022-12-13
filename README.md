@@ -37,7 +37,6 @@ export TF_VAR_terraform_service_account=$TERRAFORM_SA_ID
 ## Create the Google Cloud Infrastructure
 
 ```
-cd tf-gke
 terraform init
 terraform plan
 terraform apply --auto-approve
