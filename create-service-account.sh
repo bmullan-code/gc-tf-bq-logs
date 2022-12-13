@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export TERRAFORM_SA_ID=gc-tf-bq-logs
+# export TERRAFORM_SA_ID=gc-tf-bq-logs
 
 gcloud iam service-accounts create $TERRAFORM_SA_ID \
   --project=$PROJECT_ID
