@@ -35,7 +35,7 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   provisioner "local-exec" {
-    command = "sleep 60 && gcloud compute ssh ${google_compute_instance.vm_instance.name} --tunnel-through-iap --command \"sudo service google-cloud-ops-agent restart\""
+    command = "sleep 90 && gcloud compute ssh ${google_compute_instance.vm_instance.name} --tunnel-through-iap --command \"sudo service google-cloud-ops-agent restart\""
   }
 
   metadata_startup_script = <<EOT
