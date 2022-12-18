@@ -1,6 +1,8 @@
 # Terraform BigQuery / Logs Sink Demo
 Demonstrate using Terraform to automate the creation of a BigQuery dataset and a logs sink to populate it.
 
+![image](https://raw.githubusercontent.com/bmullan-google/gc-tf-bq-logs/main/Terraform-BigQuery-LogSink-Demo.png)
+
 ## Setup your environment
 - Start a Google Cloud shell
 
