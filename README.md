@@ -56,35 +56,28 @@ terraform apply --auto-approve
 This will create the following resources ...
 - A VPC
 - A VPC subnet
+- A Cloud Router
+- A Cloud nat gateway
 - A GCE instance running apache web server
 - A BigQuery Dataset
 - A Logs sink that sinks apache web server logs to a table in the BigQuery dataset
 
 ## Test the setup
-
-- Exercise the apache server. From the output from running terraform you should have the ip of the apache web server eg. 
+- Note this vm does not have a public ip address (security best practice)
+- To access it you will start an iap tunnel. The terraform output will include the command to start the tunnel eg. 
+```
+gcloud compute start-iap-tunnel bql-apache-http-server 80 --local-host-port=localhost:8080
+```
+- This will map port 80 on the apache web server to port 8080 on your localhost machine eg. 
+```
+gcloud compute start-iap-tunnel bql-apache-http-server 80 --local-host-port=localhost:8080
+Testing if tunnel connection works.
+Listening on port [8080].
+```
+- Now you can exercise the apache server by creating a request to the web server eg. (you can run this command multiple times)
 
 ```
-Outputs:
-instance_ip_addr = "35.202.157.172"
-```
-
-Create a request to the web server
-
-```
-curl 35.202.157.172
-```
-
-Alternatively install the "siege" tool to load test the server
-
-```
-sudo apt install siege -y
-```
-
-And run it with the following command for a few seconds
-
-```
-siege <ip-address>
+curl localhost:8080
 ```
 
 - Go to Cloud Console and review Logging -> Logs Explorer

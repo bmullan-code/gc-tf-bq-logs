@@ -1,5 +1,6 @@
 
 resource "google_compute_instance" "vm_instance" {
+  depends_on = [google_compute_router_nat.nat] 
   name         = "${var.prefix}-apache-http-server"
   #machine_type = "e2-micro"
   machine_type = "c2-standard-4"
@@ -18,10 +19,10 @@ resource "google_compute_instance" "vm_instance" {
 
   network_interface {
     network = google_compute_network.vpc_network.id
-    subnetwork = google_compute_subnetwork.network-with-private-secondary-ip-ranges.id
-    access_config {
-      // Ephemeral public IP
-    }
+    subnetwork = google_compute_subnetwork.vpc_subnet.id
+    # access_config {
+    #  // Ephemeral public IP
+    # }
   }
 
   metadata = {
