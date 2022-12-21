@@ -30,12 +30,6 @@ export TERRAFORM_SA_ID=terraform
 ./create-service-account.sh
 ```
 
-- If running in argolis, set org policies
-
-```
-./set-argolis-org-policies.sh
-```
-
 - Set terraform env variables
 
 ```
